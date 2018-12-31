@@ -1,4 +1,4 @@
-This repository contains a clij plugin for convolving images with custom OpenCL kernels.
+This repository contains a clij plugin for convolving images with custom kernels.
 
 
 In order to deploy a plugin to your Fiji installation, enter the correct path of your Fiji to the pom file:
