@@ -15,28 +15,24 @@ import java.util.HashMap;
  * Author: @haesleinhuepf
  * 12 2018
  */
-@Plugin(type = CLIJMacroPlugin.class, name = "CLIJ_convolveWithCustomKernel2D")
-public class ConvolveWithCustomKernel2D extends AbstractCLIJPlugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation {
+@Plugin(type = CLIJMacroPlugin.class, name = "CLIJ_convolveWithCustomKernel")
+public class ConvolveWithCustomKernel extends AbstractCLIJPlugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation {
 
     @Override
     public boolean executeCL() {
         Object[] args = openCLBufferArgs();
-        boolean result = convolveWithCustomKernel((ClearCLBuffer)( args[0]), (ClearCLBuffer)(args[1]), (ClearCLBuffer)(args[2]), asInteger(args[3]), asInteger(args[4]));
+        boolean result = convolveWithCustomKernel((ClearCLBuffer)( args[0]), (ClearCLBuffer)(args[1]), (ClearCLBuffer)(args[2]));
         releaseBuffers(args);
         return result;
     }
 
-    private boolean convolveWithCustomKernel(ClearCLBuffer src, ClearCLBuffer kernel, ClearCLBuffer dst, int kernelWidth, int kernelHeight) {
+    private boolean convolveWithCustomKernel(ClearCLBuffer src, ClearCLBuffer kernel, ClearCLBuffer dst) {
         HashMap<String, Object> parameters = new HashMap<>();
         parameters.put("src", src);
         parameters.put("kernelImage", kernel);
         parameters.put("dst", dst);
-        parameters.put("kernelWidth", kernelWidth);
-        parameters.put("kernelHeight", kernelHeight);
-        //if (src.getDimension() > 2) {
-        //    parameters.put("kernelDepth", kernel.getDepth());
-        //}
-        return clij.execute(ConvolveWithCustomKernel2D.class,
+
+        return clij.execute(ConvolveWithCustomKernel.class,
                 "customConvolution.cl",
                 "custom_convolution_" + src.getDimension() + "d",
                 parameters);
@@ -44,7 +40,7 @@ public class ConvolveWithCustomKernel2D extends AbstractCLIJPlugin implements CL
 
     @Override
     public String getParameterHelpText() {
-        return "Image source, Image convolution_kernel, Image destination, Number kernelWidth, Number kernelHeight";
+        return "Image source, Image convolution_kernel, Image destination";
     }
 
     @Override
@@ -57,4 +53,10 @@ public class ConvolveWithCustomKernel2D extends AbstractCLIJPlugin implements CL
     public String getAvailableForDimensions() {
         return "2D, 3D";
     }
+
+    @Override
+    public ClearCLBuffer createOutputBufferFromSource(ClearCLBuffer input) {
+        return super.createOutputBufferFromSource((ClearCLBuffer)args[0]);
+    }
+
 }
