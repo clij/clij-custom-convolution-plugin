@@ -1,3 +1,9 @@
+// convolveDecovolve.ijm
+//
+// Covolutio and deconvolution using CLIJ
+//
+// Author: haesleinhuepf
+// Jan 2019
 run("Close All");
 
 // get test data
@@ -21,11 +27,15 @@ Ext.CLIJ_sumOfAllPixels("kernelImage");
 sumPixels = getResult("Sum", nResults() - 1);
 Ext.CLIJ_multiplyImageAndScalar("kernelImage", "normalizedKernel", 1.0 / sumPixels);
 
+// convolve
 Ext.CLIJ_convolve("blobs.gif", "normalizedKernel", "convolved");
+// show result
 Ext.CLIJ_pull("convolved");
 run("Invert LUT");
 
-Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 50);
+// deconvolve
+Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 16);
+// show result
 Ext.CLIJ_pull("deconvolved");
 run("Invert LUT");
 

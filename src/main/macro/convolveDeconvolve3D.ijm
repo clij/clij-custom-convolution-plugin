@@ -1,3 +1,10 @@
+// convolveDecovolve.ijm
+//
+// Covolutio and deconvolution using CLIJ
+//
+// Author: haesleinhuepf
+// Jan 2019
+
 psf_folder = "C:/structure/code/clij-custom-convolution-plugin/src/main/resources/"
 run("Close All");
 
@@ -6,13 +13,10 @@ newImage("spots", "32-bit black", 100, 100, 100);
 Stack.setSlice(50);
 makeRectangle(15, 35, 1, 1);
 run("Add...", "value=255 slice");
-
 makeRectangle(45, 35, 1, 1);
 run("Add...", "value=255 slice");
-
 makeRectangle(50, 35, 1, 1);
 run("Add...", "value=255 slice");
-
 makeRectangle(50, 70, 1, 1);
 run("Add...", "value=255 slice");
 
@@ -42,6 +46,8 @@ Stack.setSlice(50);
 
 // deconvolve
 Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 5);
+
+// show results
 Ext.CLIJ_pull("deconvolved");
 Stack.setSlice(50);
 
