@@ -14,7 +14,7 @@
 
 	<groupId>net.haesleinhuepf</groupId>
 	<artifactId>clij_custom_convolution_plugin</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 
 	<name>clij-custom-convolution-plugin</name>
 	<description>clij-example-plugin</description>
