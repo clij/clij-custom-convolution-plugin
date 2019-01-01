@@ -33,12 +33,18 @@ sumPixels = getResult("Sum", nResults() - 1);
 Ext.CLIJ_multiplyImageAndScalar("kernelImage", "normalizedKernel", 1.0 / sumPixels);
 
 // convolve with normalized kernel
-Ext.CLIJ_convolveWithCustomKernel("spots", "normalizedKernel", "convolved");
+Ext.CLIJ_convolve("spots", "normalizedKernel", "convolved");
 
 // show results
 Ext.CLIJ_pull("normalizedKernel");
 Ext.CLIJ_pull("convolved");
 Stack.setSlice(50);
+
+// deconvolve
+Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 5);
+Ext.CLIJ_pull("deconvolved");
+Stack.setSlice(50);
+
 
 
 
