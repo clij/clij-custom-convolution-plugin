@@ -6,7 +6,7 @@ This plugin is delivered together with CLIJ via its update site. Add the update 
 After updating, restart Fiji.
 
 ### Example macro
-You find some example macros in the folder [tree/master/src/main/macro](tree/master/src/main/macro).
+You find some example macros in the folder [src/main/macro](src/main/macro).
 
 ### Development
 If you want to develop this plugin, open pom.xml in your IDE. After you changed the code, to deploy a plugin to your Fiji installation, enter the correct path of your Fiji to the pom.xml file:
