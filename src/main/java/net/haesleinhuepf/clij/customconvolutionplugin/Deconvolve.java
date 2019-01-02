@@ -74,6 +74,7 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
 
         psf_hat.close();
         est_conv.close();
+        est_conv_min_1.close();
         preliminary_dst.close();
         temp.close();
         error_est.close();
