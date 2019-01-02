@@ -45,7 +45,7 @@ Ext.CLIJ_pull("convolved");
 Stack.setSlice(50);
 
 // deconvolve
-Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 5);
+Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 8);
 
 // show results
 Ext.CLIJ_pull("deconvolved");
