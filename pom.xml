@@ -8,13 +8,13 @@
 	<parent>
 		<groupId>net.haesleinhuepf</groupId>
 		<artifactId>clij-parent-pom</artifactId>
-		<version>0.3.1</version>
+		<version>0.3.2</version>
 		<relativePath />
 	</parent>
 
 	<groupId>net.haesleinhuepf</groupId>
 	<artifactId>clij_custom_convolution_plugin</artifactId>
-	<version>0.1.1</version>
+	<version>0.1.2</version>
 
 	<name>clij-custom-convolution-plugin</name>
 	<description>clij-example-plugin</description>
@@ -93,5 +93,13 @@
 			<url>http://dl.bintray.com/haesleinhuepf/clij</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>bintray-haesleinhuepf-snapshots</id>
+			<name>bintray-snapshots</name>
+			<url>https://api.bintray.com/maven/haesleinhuepf/clij/clij_custom_convolution_plugin/;publish=1</url>
+		</repository>
+	</distributionManagement>
 
 </project>
