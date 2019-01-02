@@ -1,6 +1,6 @@
-// convolveDecovolve.ijm
+// convolveDecovolve3D.ijm
 //
-// Covolutio and deconvolution using CLIJ
+// Convolution and deconvolution using CLIJ
 //
 // Author: haesleinhuepf
 // Jan 2019
