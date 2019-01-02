@@ -88,7 +88,7 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
 
     @Override
     public String getDescription() {
-        return "Richardson lucy implementation (experimental).";
+        return "Richardson-Lucy implementation (experimental).";
     }
 
     @Override
