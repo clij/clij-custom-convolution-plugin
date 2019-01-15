@@ -1,7 +1,7 @@
 package net.haesleinhuepf.clij.customconvolutionplugin;
 
-import clearcl.ClearCLBuffer;
-import coremem.enums.NativeTypeEnum;
+import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
+import net.haesleinhuepf.clij.coremem.enums.NativeTypeEnum;
 import net.haesleinhuepf.clij.CLIJ;
 import net.haesleinhuepf.clij.kernels.Kernels;
 import net.haesleinhuepf.clij.macro.AbstractCLIJPlugin;
