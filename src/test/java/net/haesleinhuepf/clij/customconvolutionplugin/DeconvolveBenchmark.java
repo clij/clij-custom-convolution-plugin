@@ -1,6 +1,6 @@
 package net.haesleinhuepf.clij.customconvolutionplugin;
 
-import clearcl.ClearCLBuffer;
+import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
 import edu.mines.jtk.dsp.Conv;
 import ij.IJ;
 import ij.ImagePlus;
