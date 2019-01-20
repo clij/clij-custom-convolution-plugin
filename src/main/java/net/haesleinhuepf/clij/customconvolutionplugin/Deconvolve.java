@@ -1,5 +1,7 @@
 package net.haesleinhuepf.clij.customconvolutionplugin;
 
+import ij.IJ;
+import ij.ImagePlus;
 import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
 import net.haesleinhuepf.clij.coremem.enums.NativeTypeEnum;
 import net.haesleinhuepf.clij.CLIJ;
@@ -52,6 +54,17 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
         }
 
         for (int i = 0; i < iterations; i++) {
+            /*
+            ImagePlus intermediateResult = clij.pull(preliminary_dst);
+            intermediateResult.show();
+            if (i < 10) {
+                IJ.saveAs("tiff", "C:/structure/data/decon/deconvolved_0" + i + ".tif");
+            } else {
+                IJ.saveAs("tiff", "C:/structure/data/decon/deconvolved_" + i + ".tif");
+            }
+            intermediateResult.close();
+            */
+
             convolveWithCustomKernel(clij, preliminary_dst, psf, est_conv);
 
             // prevent division by zero by setting zero values to a small number
@@ -70,6 +83,9 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
             if (i < iterations - 1) {
                 Kernels.copy(clij, dst, preliminary_dst);
             }
+
+
+
         }
 
         psf_hat.close();
