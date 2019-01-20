@@ -32,8 +32,8 @@ public class BlindDeconvolve extends AbstractCLIJPlugin implements CLIJMacroPlug
     @Override
     public boolean executeCL() {
         ClearCLBuffer source = (ClearCLBuffer)args[0];
-        ClearCLBuffer destination = (ClearCLBuffer)args[1];
-        ClearCLBuffer psfEstimation = (ClearCLBuffer)args[2];
+        ClearCLBuffer psfEstimation = (ClearCLBuffer)args[1];
+        ClearCLBuffer destination = (ClearCLBuffer)args[2];
         int numberOfIterations = asInteger(args[3]);
         float mseThreshold = asFloat(args[4]);
 
@@ -42,7 +42,7 @@ public class BlindDeconvolve extends AbstractCLIJPlugin implements CLIJMacroPlug
         return true;
     }
 
-    public static void blindDeconvolve(CLIJ clij, ClearCLBuffer source, ClearCLBuffer destination, ClearCLBuffer psfEstimate, int psfSizeX, int psfSizeY, int psfSizeZ, int numberOfIterations, float mseThreshold) {
+    public static void blindDeconvolve(CLIJ clij, ClearCLBuffer source, ClearCLBuffer result, ClearCLBuffer psfEstimate, int psfSizeX, int psfSizeY, int psfSizeZ, int numberOfIterations, float mseThreshold) {
         ImagePlus idealPSFImp = NewImage.createFloatImage("ideal", psfSizeX, psfSizeY, psfSizeZ, NewImage.FILL_BLACK);
         idealPSFImp.setRoi(new Roi(psfSizeX / 2, psfSizeY / 2,1,1));
         idealPSFImp.setZ(psfSizeZ / 2 + 1);
@@ -52,7 +52,6 @@ public class BlindDeconvolve extends AbstractCLIJPlugin implements CLIJMacroPlug
 
 
         // start determining PSF
-        ClearCLBuffer result = clij.create(source);
 
         ClearCLBuffer difference = clij.create(result);
         ClearCLBuffer squared = clij.create(result);
@@ -78,7 +77,10 @@ public class BlindDeconvolve extends AbstractCLIJPlugin implements CLIJMacroPlug
                 break;
             }
         }
-
+        idealPSF.close();
+        difference.close();
+        squared.close();
+        formerPSFEstimate.close();
     }
 
     @Override
