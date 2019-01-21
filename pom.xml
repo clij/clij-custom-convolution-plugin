@@ -88,6 +88,7 @@
 		<dependency>
 			<groupId>net.imagej</groupId>
 			<artifactId>imagej-ops</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
