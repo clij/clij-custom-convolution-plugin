@@ -25,7 +25,7 @@ open(psf_folder + "PSF.TIF");
 rename("kernelImage");
 run("32-bit");
 
-// convolve in GPU
+// init GPU
 run("CLIJ Macro Extensions", "cl_device=");
 Ext.CLIJ_clear();
 Ext.CLIJ_push("spots");
@@ -44,7 +44,7 @@ Ext.CLIJ_pull("normalizedKernel");
 Ext.CLIJ_pull("convolved");
 Stack.setSlice(50);
 
-// deconvolve
+// deconvolve using Richardson-Lucy algorithm running for 8 iterations
 Ext.CLIJ_deconvolve("convolved", "normalizedKernel", "deconvolved", 8);
 
 // show results
