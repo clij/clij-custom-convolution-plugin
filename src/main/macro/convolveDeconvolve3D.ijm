@@ -26,7 +26,7 @@ rename("kernelImage");
 run("32-bit");
 
 // convolve in GPU
-run("CLIJ Macro Extensions", "cl_device=[Intel(R) UHD Graphics 620]");
+run("CLIJ Macro Extensions", "cl_device=");
 Ext.CLIJ_clear();
 Ext.CLIJ_push("spots");
 Ext.CLIJ_push("kernelImage");
