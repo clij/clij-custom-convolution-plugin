@@ -8,13 +8,13 @@
 	<parent>
 		<groupId>net.haesleinhuepf</groupId>
 		<artifactId>clij-parent-pom</artifactId>
-		<version>1.0.2-BETA</version>
+		<version>1.0.4</version>
 		<relativePath />
 	</parent>
 
 	<groupId>net.haesleinhuepf</groupId>
 	<artifactId>clij_custom_convolution_plugin</artifactId>
-	<version>${clij_custom_convolution_plugin.version}</version>
+	<version>1.0.4</version>
 
 	<name>clij-custom-convolution-plugin</name>
 	<description>clij-example-plugin</description>
