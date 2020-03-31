@@ -36,11 +36,11 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
         // the code here was inspired by
         // https://stackoverflow.com/questions/9854312/how-does-richardson-lucy-algorithm-work-code-example
 
-        ClearCLBuffer est_conv = clij.createCLBuffer(image);
-        ClearCLBuffer est_conv_min_1 = clij.createCLBuffer(image);
-        ClearCLBuffer preliminary_dst = clij.createCLBuffer(image);
-        ClearCLBuffer temp = clij.createCLBuffer(image);
-        ClearCLBuffer error_est = clij.createCLBuffer(image);
+        ClearCLBuffer est_conv = clij.createCLBuffer(dst);
+        ClearCLBuffer est_conv_min_1 = clij.createCLBuffer(dst);
+        ClearCLBuffer preliminary_dst = clij.createCLBuffer(dst);
+        ClearCLBuffer temp = clij.createCLBuffer(dst);
+        ClearCLBuffer error_est = clij.createCLBuffer(dst);
 
         // initial guess
         Kernels.copy(clij, image, preliminary_dst);
@@ -105,7 +105,10 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
 
     @Override
     public String getDescription() {
-        return "Richardson-Lucy implementation (experimental).";
+        return "Richardson-Lucy implementation (for academic purposes).\n\n" +
+                "Known issues: This implementation is rather slow when working with large convolution kernels " +
+                "(images of point spread functions). An update is on the way:" +
+                "https://forum.image.sc/t/high-performance-fft-based-algorithms-deconvolution/31710/40";
     }
 
     @Override
@@ -115,7 +118,7 @@ public class Deconvolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, C
 
     @Override
     public ClearCLBuffer createOutputBufferFromSource(ClearCLBuffer input) {
-        return super.createOutputBufferFromSource((ClearCLBuffer)args[0]);
+        return clij.create(((ClearCLBuffer)args[0]).getDimensions(), NativeTypeEnum.Float);
     }
 
 }

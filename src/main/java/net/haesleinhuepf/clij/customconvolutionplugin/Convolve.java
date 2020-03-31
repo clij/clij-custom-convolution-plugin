@@ -2,6 +2,7 @@ package net.haesleinhuepf.clij.customconvolutionplugin;
 
 import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
 import net.haesleinhuepf.clij.CLIJ;
+import net.haesleinhuepf.clij.coremem.enums.NativeTypeEnum;
 import net.haesleinhuepf.clij.macro.AbstractCLIJPlugin;
 import net.haesleinhuepf.clij.macro.CLIJMacroPlugin;
 import net.haesleinhuepf.clij.macro.CLIJOpenCLProcessor;
@@ -57,7 +58,7 @@ public class Convolve extends AbstractCLIJPlugin implements CLIJMacroPlugin, CLI
 
     @Override
     public ClearCLBuffer createOutputBufferFromSource(ClearCLBuffer input) {
-        return super.createOutputBufferFromSource((ClearCLBuffer)args[0]);
+        return clij.create(((ClearCLBuffer)args[0]).getDimensions(), NativeTypeEnum.Float);
     }
 
 }
