@@ -59,10 +59,10 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:git:git://github.com/clij/clij</connection>
-        <developerConnection>scm:git:git@github.com/clij/clij</developerConnection>
-        <tag>HEAD</tag>
-		<url>https://github.com/clij/clij</url>
+		<connection>scm:git:git://github.com/clij/clij-custom-convolution-plugin</connection>
+    <developerConnection>scm:git:git@github.com/clij/clij-custom-convolution-plugin</developerConnection>
+    <tag>HEAD</tag>
+		<url>https://github.com/clij/clij-custom-convolution-plugin</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
